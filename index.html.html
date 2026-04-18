@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Infotech | Pithampur's No.1 Computer Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #bc13fe; 
+            --secondary: #ff0054; 
+            --bg-dark: #05010d;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-gray: #b0b0b0;
+            --gold: #ffd700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-dark); color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+        nav { 
+            padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(5, 1, 13, 0.98); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(188, 19, 254, 0.3); 
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero { 
+            height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; 
+            background: radial-gradient(circle at 50% 50%, #1a0233 0%, var(--bg-dark) 80%); 
+        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; font-weight: 800; margin-bottom: 20px; }
+        .highlight { background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--text-gray); max-width: 800px; font-size: 1.1rem; margin-bottom: 35px; }
+        
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+        .btn-main { background: var(--primary); color: #fff; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; box-shadow: 0 10px 20px rgba(188, 19, 254, 0.3); }
+        .btn-outline { border: 2px solid var(--primary); color: #fff; padding: 13px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(188, 19, 254, 0.5); }
+
+        .why-us { background: rgba(188, 19, 254, 0.03); padding: 80px 8%; border-radius: 50px; margin: 20px; text-align: center; }
+        .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .trust-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px; }
+        .trust-card h3 { margin-bottom: 10px; color: var(--gold); }
+
+        section { padding: 100px 8%; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.8rem; }
+        
+        .course-container { max-width: 900px; margin: 0 auto; }
+        .course-box { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; margin-bottom: 20px; overflow: hidden; }
+        .course-trigger { padding: 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); }
+        .course-trigger h3 { font-size: 1.5rem; color: var(--primary); }
+        .course-trigger i { transition: 0.3s; }
+        .active .course-trigger i { transform: rotate(180deg); color: var(--secondary); }
+        
+        .course-content { max-height: 0; overflow: hidden; transition: 0.5s ease; background: rgba(0,0,0,0.2); }
+        .active .course-content { max-height: 1500px; padding: 30px; border-top: 1px solid rgba(188, 19, 254, 0.2); }
+        
+        .course-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .course-list-item { list-style: none; margin-bottom: 10px; font-size: 0.95rem; }
+        .course-list-item::before { content: "⚡ "; color: var(--secondary); }
+        .price-tag { background: var(--secondary); padding: 10px 20px; border-radius: 10px; font-weight: 800; display: inline-block; margin-top: 20px; }
+
+        .coming-soon-wrapper { position: relative; border-radius: 30px; overflow: hidden; margin-top: 50px; }
+        .blur-bg { filter: blur(15px); opacity: 0.3; background: #fff; padding: 100px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .coming-soon-overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            background: rgba(5, 1, 13, 0.4); z-index: 2;
+        }
+        .coming-soon-overlay h2 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; text-shadow: 0 0 20px var(--primary); text-align: center; }
+
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        .faq-item h4 { color: var(--primary); margin-bottom: 5px; }
+
+        footer { background: #000; padding: 80px 8% 40px; border-top: 2px solid var(--primary); text-align: center; }
+        .contact-big { font-size: clamp(1.5rem, 5vw, 3rem); color: #fff; text-decoration: none; font-weight: 800; transition: 0.3s; }
+        .contact-big:hover { color: var(--primary); text-shadow: 0 0 30px var(--primary); }
+        
+        .social-links { margin: 30px 0; font-size: 2rem; }
+        .social-links a { color: #fff; margin: 0 20px; transition: 0.3s; text-decoration: none; }
+        .social-links a:hover { color: var(--secondary); transform: translateY(-5px); display: inline-block; }
+
+        @media (max-width: 768px) {
+            .course-info-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">PRIME INFOTECH</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#faq">FAQs</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <p style="letter-spacing: 3px; font-weight: 600; color: var(--primary);">ESTABLISHED 2010 | PITHAMPUR</p>
+        <h1>Don't Just Learn. <br><span class="highlight">Dominate The Tech.</span></h1>
+        <p>Join 5000+ successful students who started their journey with Neelesh Sir. Premium training with AC Labs & Free T-Shirts.</p>
+        <div class="btn-group">
+            <a href="D:/registeration.html" class="btn-main">Register Now</a>
+            <a href="#courses" class="btn-outline">View Courses</a>
+        </div>
+    </section>
+
+    <section class="why-us" id="about">
+        <div class="section-header">
+            <p>The Prime Advantage</p>
+            <h2>Why Students Choose Us Over Others?</h2>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Expert Guidance</h3>
+                <p>Learn directly from Neelesh Sir (15+ years exp). Not from part-time tutors like other institutes.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fas fa-snowflake"></i>
+                <h3>Premium Comfort</h3>
+                <p>Fully Air-Conditioned Labs. Because a comfortable mind learns 2x faster than a sweating one.</p>
+            </div>
+            <div class="trust-card">
+                <i class="fas fa-briefcase"></i>
+                <h3>Job Ready</h3>
+                <p>We don't just give certificates; we give skills that companies actually pay for.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses">
+        <div class="section-header">
+            <p>Our Specializations</p>
+            <h2>Educational Courses</h2>
+        </div>
+
+        <div class="course-container">
+            <div class="course-box" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>DCA (Computer Diploma)</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Syllabus Includes:</h4>
+                            <ul>
+                                <li class="course-list-item">Computer Fundamentals</li>
+                                <li class="course-list-item">Windows 10/11</li>
+                                <li class="course-list-item">Ms-Office-2021/365 (Word, Excel, PPT)</li>
+                                <li class="course-list-item">HTML</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Eligibility:</strong> 10th Pass</p>
+                            <p><strong>Duration:</strong> 3-6 Months</p>
+                            <div class="price-tag">TOTAL FEE: ₹2,800/-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-box" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>DCAA (Diploma in Application & Accounting)</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Syllabus Includes:</h4>
+                            <ul>
+                                <li class="course-list-item">Windows 10/11 & Ms-Office-2021</li>
+                                <li class="course-list-item">Basic Knowledge of Accounting</li>
+                                <li class="course-list-item">Latest Accounting Package Tally</li>
+                                <li class="course-list-item">Internet & E-mail</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Eligibility:</strong> 10th Pass</p>
+                            <p><strong>Duration:</strong> 6-9 Months</p>
+                            <div class="price-tag">TOTAL FEE: ₹6,400/-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-box active" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>ADCA (Advanced Diploma) ★</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Advanced Curriculum:</h4>
+                            <ul>
+                                <li class="course-list-item">DOS & Windows 10/11</li>
+                                <li class="course-list-item">DTP (Page Maker, Coral Draw, Photo Shop)</li>
+                                <li class="course-list-item">Tally 7.2/9.0 (With GST & Inventory)</li>
+                                <li class="course-list-item">Internship & Live Practical Training</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Eligibility:</strong> 12th Pass</p>
+                            <p><strong>Duration:</strong> 8-12 Months</p>
+                            <div class="price-tag" style="background: var(--primary);">FEE: ₹8,500/-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-box" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>ADOA (Office Automation)</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Syllabus Includes:</h4>
+                            <ul>
+                                <li class="course-list-item">Advance Ms-Word, Excel, Power Point</li>
+                                <li class="course-list-item">Advance Internet & E-mail</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Eligibility:</strong> 10th Pass</p>
+                            <p><strong>Duration:</strong> 3 Months</p>
+                            <div class="price-tag">TOTAL FEE: ₹3,400/-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-box" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>DTP (Desk Top Publication)</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Design Tools:</h4>
+                            <ul>
+                                <li class="course-list-item">Page Maker</li>
+                                <li class="course-list-item">Coral Draw</li>
+                                <li class="course-list-item">Photo Shop</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Eligibility:</strong> 10th Pass</p>
+                            <p><strong>Duration:</strong> 2-4 Months</p>
+                            <div class="price-tag">TOTAL FEE: ₹5,300/-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-box" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>CCCA (Computer Accounting)</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Accounting Modules:</h4>
+                            <ul>
+                                <li class="course-list-item">Tally 9.0/ Prime</li>
+                                <li class="course-list-item">Inventory Management</li>
+                                <li class="course-list-item">Taxation GST</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Eligibility:</strong> 10th Pass</p>
+                            <p><strong>Duration:</strong> 3-6 Months</p>
+                            <div class="price-tag">FEE: ₹4,400/- (+500/- Manual)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-box" onclick="this.classList.toggle('active')">
+                <div class="course-trigger"><h3>Short Term Certifications</h3><i class="fas fa-chevron-down"></i></div>
+                <div class="course-content">
+                    <div class="course-info-grid">
+                        <div>
+                            <h4>Options:</h4>
+                            <ul>
+                                <li class="course-list-item">ACI (Advance Internet) - ₹1,300/-</li>
+                                <li class="course-list-item">Advance Excel - ₹2,400/-</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p><strong>Focus:</strong> Skill enhancement</p>
+                            <p><strong>Eligibility:</strong> 10th Pass</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="coming-soon-wrapper">
+            <div class="coming-soon-overlay">
+                <h2>Advanced Courses<br><span style="color:var(--gold); font-size: 1.5rem;">Coming Soon</span></h2>
+                <p>Python, Java & Cyber Security</p>
+            </div>
+            <div class="blur-bg">
+                <div style="background:#ddd; height:150px; border-radius:10px;"></div>
+                <div style="background:#ddd; height:150px; border-radius:10px;"></div>
+                <div style="background:#ddd; height:150px; border-radius:10px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p style="color:var(--primary); font-weight: 600; margin-bottom: 20px;">BOOK YOUR SEAT TODAY</p>
+        <a href="tel:9300926285" class="contact-big">9300926285</a>
+        
+        <div class="social-links">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=infotech.prime2@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/919300926285" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://instagram.com/_prime_infotech_" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+
+        <p><i class="fas fa-map-marker-alt" style="color:var(--secondary);"></i> Kashiram Complex, Near Indorama, Sector 3, Pithampur</p>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Prime Infotech | Neelesh Sir</p>
+    </footer>
+
+</body>
+</html>
