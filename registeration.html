@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | Prime Infotech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --neon-purple: #bc13fe; 
+            --neon-pink: #ff0054; 
+            --bg-dark: #05010d;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        body { 
+            font-family: var(--font-main); 
+            background-color: var(--bg-dark); 
+            color: #fff; 
+            padding: 60px 20px;
+            background-image: radial-gradient(circle at 50% 0%, #1a052d 0%, var(--bg-dark) 75%);
+        }
+
+        .form-container { 
+            max-width: 1200px; /* Wide Desktop Look */
+            margin: 0 auto; 
+            background: var(--glass-bg); 
+            padding: 60px; 
+            border-radius: 40px; 
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 30px rgba(188, 19, 254, 0.1);
+        }
+        
+        .form-header { text-align: center; margin-bottom: 60px; }
+        
+        .form-header h1 { 
+            font-size: 3.8rem; 
+            font-weight: 900; /* Extra Bold Inter */
+            letter-spacing: -1px; /* Modern Tight Look */
+            background: linear-gradient(to bottom, #fff, var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(188, 19, 254, 0.4);
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: var(--neon-pink);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .section-head {
+            grid-column: span 2;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 50px 0 25px 0;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .section-head::after {
+            content: "";
+            height: 2px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--neon-purple), transparent);
+            margin-left: 20px;
+        }
+
+        .form-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 35px 50px; 
+        }
+        
+        .full-width { grid-column: span 2; }
+
+        label { 
+            display: block; 
+            margin-bottom: 12px; 
+            font-size: 0.75rem; 
+            color: #999; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        input, select, textarea { 
+            width: 100%; 
+            padding: 18px 25px; 
+            border-radius: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            background: rgba(0, 0, 0, 0.4); 
+            color: #fff; 
+            font-size: 1rem;
+            font-family: var(--font-main);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--neon-purple);
+            background: rgba(188, 19, 254, 0.08);
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.25);
+            transform: translateY(-3px);
+        }
+
+        /* Table Styling */
+        .qual-table { 
+            width: 100%; 
+            border-collapse: separate; 
+            border-spacing: 15px 10px;
+            margin: 0 -15px;
+        }
+        .qual-table th { 
+            color: var(--neon-purple); 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            padding-bottom: 12px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+        .qual-table input { padding: 14px; font-size: 0.95rem; border-radius: 12px; }
+
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 70px;
+        }
+
+        .submit-btn { 
+            font-family: var(--font-main);
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink)); 
+            color: #fff; 
+            border: none; 
+            padding: 24px 110px; 
+            border-radius: 100px; 
+            font-size: 1.2rem; 
+            font-weight: 900; 
+            cursor: pointer; 
+            letter-spacing: 2px;
+            transition: 0.5s;
+            box-shadow: 0 15px 45px rgba(188, 19, 254, 0.4);
+            text-transform: uppercase;
+        }
+        
+        .submit-btn:hover { 
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 65px rgba(255, 0, 84, 0.6);
+            letter-spacing: 4px;
+        }
+
+        option { background: #111; color: #fff; }
+
+        @media (max-width: 900px) { 
+            .form-grid { grid-template-columns: 1fr; } 
+            .full-width { grid-column: span 1; }
+            .form-container { padding: 35px 25px; }
+            .form-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h1>PRIME INFOTECH</h1>
+            <p>Admission Registration Portal</p>
+        </div>
+
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="c59788a7-d806-4165-a589-764bd566097d">
+
+            <div class="form-grid">
+                <div class="section-head">Program Selection</div>
+                <div class="input-group">
+                    <label>Choose Your Course</label>
+                    <select name="course" required>
+                        <option value="" disabled selected>-- Select Course --</option>
+                        <option value="DCA">DCA (Diploma in Computer Application)</option>
+                        <option value="DCAA">DCAA (Diploma in Computer Application & Accounting)</option>
+                        <option value="ADCA">ADCA (Advanced Diploma in Computer Application)</option>
+                        <option value="ADOA">ADOA (Advanced Diploma in Office Automation)</option>
+                        <option value="DTP">DTP (Desk Top Publication)</option>
+                        <option value="CCCA">CCCA (Certificate Course in Computer Accounting)</option>
+                        <option value="ACI">ACI (Advanced Course in Internet)</option>
+                        <option value="Advance Excel">Advance Excel</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Form Number</label>
+                    <input type="text" name="form_no" placeholder="####">
+                </div>
+
+                <div class="section-head">Student Information</div>
+                <div class="input-group full-width">
+                    <label>Full Name</label>
+                    <input type="text" name="student_name" placeholder="Enter Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Father's Name</label>
+                    <input type="text" name="father_name" required>
+                </div>
+                <div class="input-group">
+                    <label>Mother's Name</label>
+                    <input type="text" name="mother_name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Date of Birth</label>
+                    <input type="date" name="dob" required>
+                </div>
+                <div class="input-group">
+                    <label>Admission Date</label>
+                    <input type="date" name="admission_date">
+                </div>
+
+                <div class="section-head">Academic Details</div>
+                <div class="full-width">
+                    <table class="qual-table">
+                        <thead>
+                            <tr><th>Standard</th><th>Board / University</th><th>Year</th><th>Percentage</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10th</td>
+                                <td><input type="text" name="10_board"></td>
+                                <td><input type="text" name="10_year"></td>
+                                <td><input type="text" name="10_percent"></td>
+                            </tr>
+                            <tr>
+                                <td>12th</td>
+                                <td><input type="text" name="12_board"></td>
+                                <td><input type="text" name="12_year"></td>
+                                <td><input type="text" name="12_percent"></td>
+                            </tr>
+                            <tr>
+                                <td>Other</td>
+                                <td><input type="text" name="other_board"></td>
+                                <td><input type="text" name="other_year"></td>
+                                <td><input type="text" name="other_percent"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section-head">Address & Contact</div>
+                <div class="input-group full-width">
+                    <label>Residential Address</label>
+                    <textarea name="address" rows="2" placeholder="Full Address with Pincode"></textarea>
+                </div>
+                <div class="input-group">
+                    <label>Mobile (Student)</label>
+                    <input type="tel" name="mobile_student" placeholder="+91" required>
+                </div>
+                <div class="input-group">
+                    <label>Mobile (Guardian)</label>
+                    <input type="tel" name="mobile_parent" placeholder="+91">
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Complete Registration</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
